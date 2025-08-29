@@ -1,0 +1,41 @@
+Snake-Water-Gun Game
+"""
+
+import random
+
+'''
+1 for snake
+-1 for water
+0 for gun
+'''
+
+# using random module
+computer = random.choice([1, -1, 0])
+print("Enter your choice: s for snake, w for water, g for gun") # Added instructions for the user
+youstr = input("Enter your choice: ")
+youDict = {"s":1, "w":-1, "g":0} # Corrected the key for 'g'
+reverseDict = {1:"Snake", -1:"Water", 0:"Gun"}
+
+if youstr in youDict: # Checking if the input is valid
+    you = youDict[youstr]
+
+    print(f"You chose {reverseDict[you]}\nComputer chose {reverseDict[computer]}") # Corrected print syntax and used f-string
+
+    # running the if-elif-else ladder
+    if(computer == you):
+        print("It's a Draw!")
+    else:
+        if(computer == -1 and you == 1):
+            print("You win!")
+        elif(computer == -1 and you == 0):
+            print("You lose!")
+        elif(computer == 1 and you == -1):
+            print("You lose!")
+        elif(computer == 1 and you == 0):
+            print("You win!")
+        elif(computer == 0 and you == -1):
+            print("You win!")
+        elif(computer == 0 and you == 1):
+            print("You lose!")
+else:
+    print("Invalid input. Please enter 's', 'w', or 'g'.") # Added handling for invalid input
